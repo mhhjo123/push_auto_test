@@ -1,8 +1,4 @@
-node{
-    tools{
-        jdk("java")
-    }
-    
+node{    
     stage("Checkout"){
         echo "Github Checkout"
         git branch: 'master', credentialsId: 'github_connect', url: 'https://github.com/mhhjo123/jk_test.git'
