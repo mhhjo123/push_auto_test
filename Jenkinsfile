@@ -22,7 +22,7 @@ pipeline{
     
     stage('Deploy'){
       echo 'Deploy to Linux Server'
-      bat sshPublisher(
+      sshPublisher(
             publishers: 
             [sshPublisherDesc(
                 configName: 'Linux for Jenkins Test', 
