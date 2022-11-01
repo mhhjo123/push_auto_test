@@ -38,9 +38,5 @@ node{
             )
             ]
         )
-    }
-    
-    stage("Test"){
-        echo "Good to See you!"
-    }
+    }   
 }
