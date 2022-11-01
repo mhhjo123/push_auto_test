@@ -6,7 +6,7 @@ node{
     
     stage("Build"){        
         echo "Java Compile"
-        bat "javac src/jenkins/Main.java"
+        bat "javac -target 1.8 src/jenkins/Main.java"
     }
     
     stage("Deploy"){
