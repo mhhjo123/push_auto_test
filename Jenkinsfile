@@ -1,4 +1,8 @@
-node{    
+node{
+    tools{
+        jdk("java")
+    }
+    
     stage("Checkout"){
         echo "Github Checkout"
         git branch: 'master', credentialsId: 'github_connect', url: 'https://github.com/mhhjo123/Jenkins_test.git'
