@@ -3,8 +3,7 @@ pipeline{
     
   stages{
     stage('Checkout'){
-      steps{
-        
+      steps{        
         git branch: 'master', credentialsId: 'github_connect', url: 'https://github.com/mhhjo123/jk_test.git'
       }
     }
