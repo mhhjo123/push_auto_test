@@ -11,8 +11,7 @@ pipeline{
     
     
     stage('Build'){
-      steps{
-        
+      steps{        
         bat "javac src/jenkins/Main.java"
       }
     }
