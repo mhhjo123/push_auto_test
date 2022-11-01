@@ -21,38 +21,41 @@ pipeline{
     }
     
     stage('Deploy'){
-      
-      sshPublisher(
-            publishers: 
-            [sshPublisherDesc(
-                configName: 'Linux for Jenkins Test', 
-                transfers: 
-                [sshTransfer(
-                    cleanRemote: false, 
-                    excludes: '', 
-                    execCommand: '''echo cd jenkins_test/src > /root/jenkins_test/jenkins_result.txt
-                                    cd jenkins_test/src >> /root/jenkins_test/jenkins_result.txt
-                                    echo Main.class execute >> /root/jenkins_test/jenkins_result.txt
-                                    java jenkins.Main >> /root/jenkins_test/jenkins_result.txt''', 
-                    execTimeout: 120000, 
-                    flatten: false, 
-                    makeEmptyDirs: false, 
-                    noDefaultExcludes: false, 
-                    patternSeparator: '[, ]+', 
-                    remoteDirectory: '', 
-                    remoteDirectorySDF: false, 
-                    removePrefix: '', 
-                    sourceFiles: 'src/jenkins/*.class')], 
-                    usePromotionTimestamp: false, 
-                    useWorkspaceInPromotion: false, 
-                    verbose: true
-            )
-            ]
-        )
+      steps{
+        sshPublisher(
+              publishers: 
+              [sshPublisherDesc(
+                  configName: 'Linux for Jenkins Test', 
+                  transfers: 
+                  [sshTransfer(
+                      cleanRemote: false, 
+                      excludes: '', 
+                      execCommand: '''echo cd jenkins_test/src > /root/jenkins_test/jenkins_result.txt
+                                      cd jenkins_test/src >> /root/jenkins_test/jenkins_result.txt
+                                      echo Main.class execute >> /root/jenkins_test/jenkins_result.txt
+                                      java jenkins.Main >> /root/jenkins_test/jenkins_result.txt''', 
+                      execTimeout: 120000, 
+                      flatten: false, 
+                      makeEmptyDirs: false, 
+                      noDefaultExcludes: false, 
+                      patternSeparator: '[, ]+', 
+                      remoteDirectory: '', 
+                      remoteDirectorySDF: false, 
+                      removePrefix: '', 
+                      sourceFiles: 'src/jenkins/*.class')], 
+                      usePromotionTimestamp: false, 
+                      useWorkspaceInPromotion: false, 
+                      verbose: true
+              )
+              ]
+          )
+      }
     }
     
     stage('End'){
-      
+      steps{
+        echo "test complete"
+      }
     }
     
   }
