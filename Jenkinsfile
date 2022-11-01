@@ -7,7 +7,7 @@ pipeline{
   stages{
     stage('Checkout'){
       steps{
-        bat "echo 'Github Checkout'"
+        echo 'Github Checkout'
         git branch: 'master', credentialsId: 'github_connect', url: 'https://github.com/mhhjo123/jk_test.git'
       }
     }
@@ -15,14 +15,14 @@ pipeline{
     
     stage('Build'){
       steps{
-        bat "echo 'Java Compile'"
+        echo 'Java Compile'
         bat "javac src/jenkins/Main.java"
       }
     }
     
     stage('Deploy'){
-      bat "echo 'Deploy to Linux Server'"
-      bat "sshPublisher(
+      echo 'Deploy to Linux Server'
+      bat sshPublisher(
             publishers: 
             [sshPublisherDesc(
                 configName: 'Linux for Jenkins Test', 
@@ -49,7 +49,7 @@ pipeline{
             )
             ]
         )
-    }"
+    }
     
     stage('End'){
       echo "Jenkins Complete"
