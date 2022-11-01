@@ -50,7 +50,7 @@ pipeline{
     
     stage('End'){
       steps{
-        echo "test complete"
+        echo "test complete!"
       }
     }
     
